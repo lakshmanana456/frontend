@@ -1,6 +1,6 @@
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
-const ContactUs = () => {
+const Contactus = () => {
   
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -77,4 +77,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default Contactus;
