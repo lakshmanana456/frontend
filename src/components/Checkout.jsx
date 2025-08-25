@@ -104,7 +104,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-col lg:flex-row px-6 gap-10 mt-4">
+    <div className="flex flex-col md:flex-col lg:flex-row px-6 gap-10 mt-4 mb-8">
       {/* Delivery Info */}
       <section className="flex-1 mx-8">
         <h1 className="font-semibold text-2xl mb-4">
