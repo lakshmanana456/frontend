@@ -10,7 +10,7 @@ import Login from "./components/Login";
 import Footer from "./components/Footer";
 import OrderSummary from "./components/OrderSummary";
 import OrderHistory from "./components/OrderHistory";
-import Contactus from "./components/Contactus";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contactus" element={<Contactus />} />
+        <Route path="/contactus" element={<Contact />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/productdetails/:id" element={<ProductDetails />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
