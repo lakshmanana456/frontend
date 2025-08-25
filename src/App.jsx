@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import OrderSummary from "./components/OrderSummary";
 import OrderHistory from "./components/OrderHistory";
 import ContactUs from "./components/Contactus";
+// import ContactUs from "./components/ContactUs";
 
 function App() {
   return (
