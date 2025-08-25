@@ -33,7 +33,7 @@ const ProductList = () => {
 
   // Fetch products
   useEffect(() => {
-    axios.get("http://localhost:5000/productlist").then((res) => {
+    axios.get("https://backend-1-v6zd.onrender.com/productlist").then((res) => {
       setProducts(res.data);
     });
   }, []);
@@ -97,7 +97,7 @@ const ProductList = () => {
       formData.append(key, newProduct[key]);
     }
     try {
-      const res = await axios.post("http://localhost:5000/addproduct", formData, {
+      const res = await axios.post("https://backend-1-v6zd.onrender.com/addproduct", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setProducts([...products, res.data]);
@@ -117,7 +117,7 @@ const ProductList = () => {
     }
     try {
       const res = await axios.put(
-        `http://localhost:5000/updateproduct/${editingId}`,
+        `https://backend-1-v6zd.onrender.com/updateproduct/${editingId}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -172,7 +172,7 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
-      await axios.delete(`http://localhost:5000/deleteproduct/${id}`);
+      await axios.delete(`https://backend-1-v6zd.onrender.com/deleteproduct/${id}`);
       setProducts(products.filter((p) => p._id !== id));
     } catch (err) {
       console.error("Error deleting product:", err);
@@ -321,7 +321,7 @@ const ProductList = () => {
                     <div className="overflow-hidden rounded-lg ">
                       <img
                         className="w-44 h-40 mx-auto object-contain transform group-hover:scale-105 transition duration-300"
-                        src={`http://localhost:5000${data.imageUrl}`}
+                        src={`https://backend-1-v6zd.onrender.com${data.imageUrl}`}
                         alt={data.name}
                       />
                     </div>
