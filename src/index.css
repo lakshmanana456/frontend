@@ -1,0 +1,15 @@
+:root {
+  font-family: 'Roboto'  system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+a {
+ 
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
