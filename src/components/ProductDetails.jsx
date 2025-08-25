@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
   // Fetch product
   useEffect(() => {
-    axios.get(`http://localhost:5000/product/${id}`).then((res) => {
+    axios.get(`https://backend-1-v6zd.onrender.com/product/${id}`).then((res) => {
       setProduct(res.data);
     });
   }, [id]);
@@ -52,7 +52,7 @@ const ProductDetails = () => {
       {/* Image */}
       <div className="flex justify-center items-center">
         <img
-          src={`http://localhost:5000${product.imageUrl}`}
+          src={`https://backend-1-v6zd.onrender.com${product.imageUrl}`}
           alt={product.name}
           className="w-96 h-96 rounded-2xl shadow-lg border"
         />

@@ -18,7 +18,7 @@ const OrderHistory = () => {
       } else {
         try {
           const res = await axios.get(
-            `http://localhost:5000/orders/${user.uid}`
+            `https://backend-1-v6zd.onrender.com/orders/${user.uid}`
           );
           setOrders(res.data);
         } catch (err) {

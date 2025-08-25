@@ -49,8 +49,8 @@ const ShoppingCart = () => {
             <img
               src={
                 typeof product === "object"
-                  ? `http://localhost:5000${product.imageUrl}`
-                  : `http://localhost:5000/product/image/${productId}`
+                  ? `https://backend-1-v6zd.onrender.com${product.imageUrl}`
+                  : `https://backend-1-v6zd.onrender.com/product/image/${productId}`
               }
               alt={item.name || product.name}
               className="lg:w-24 lg:h-24 w-16 h-16 object-cover rounded-md"

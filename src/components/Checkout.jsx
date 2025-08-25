@@ -74,7 +74,7 @@ const Checkout = () => {
       const user = auth.currentUser;
       const userId = user.uid;
 
-      const res = await axios.post(`http://localhost:5000/order/${userId}`, {
+      const res = await axios.post(`https://backend-1-v6zd.onrender.com/order/${userId}`, {
         deliveryInfo: formData,
         paymentMethod: "Cash on Delivery",
       });

@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
       if (user) {
         setUserId(user.uid);
         // fetch cart when user logs in
-        axios.get(`http://localhost:5000/cart/${user.uid}`)
+        axios.get(`https://backend-1-v6zd.onrender.com/cart/${user.uid}`)
           .then(res => setCart(res.data.items || []))
           .catch(err => console.error("Error fetching cart:", err));
       } else {
@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (product) => {
     if (!userId) return alert("Please login to add items to your cart");
 
-    const res = await axios.post(`http://localhost:5000/cart/${userId}/add`, {
+    const res = await axios.post(`https://backend-1-v6zd.onrender.com/cart/${userId}/add`, {
       productId: product._id,
       name: product.name,
       offerPrice: product.offerPrice
@@ -40,7 +40,7 @@ export const CartProvider = ({ children }) => {
   //  Remove from cart
   const removeFromCart = async (id) => {
     if (!userId) return;
-    const res = await axios.delete(`http://localhost:5000/cart/${userId}/remove/${id}`);
+    const res = await axios.delete(`https://backend-1-v6zd.onrender.com/cart/${userId}/remove/${id}`);
     setCart(res.data.items);
   };
 
@@ -49,7 +49,7 @@ export const CartProvider = ({ children }) => {
     if (!userId) return;
     const item = cart.find(p => p.productId === id);
     if (item) {
-      const res = await axios.put(`http://localhost:5000/cart/${userId}/update`, {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
         productId: id,
         quantity: item.quantity + 1
       });
@@ -62,7 +62,7 @@ export const CartProvider = ({ children }) => {
     if (!userId) return;
     const item = cart.find(p => p.productId === id);
     if (item && item.quantity > 1) {
-      const res = await axios.put(`http://localhost:5000/cart/${userId}/update`, {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
         productId: id,
         quantity: item.quantity - 1
       });
@@ -73,7 +73,7 @@ export const CartProvider = ({ children }) => {
   //  Clear cart
   const clearCart = async () => {
     if (!userId) return;
-    await axios.delete(`http://localhost:5000/cart/${userId}/clear`);
+    await axios.delete(`https://backend-1-v6zd.onrender.com/cart/${userId}/clear`);
     setCart([]);
   };
 
