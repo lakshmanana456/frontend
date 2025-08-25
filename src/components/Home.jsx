@@ -10,7 +10,7 @@ const Home = () => {
   const [latestcollection, setLatestcollection] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:5000/productlist").then((res) => {
+    axios.get("https://backend-1-v6zd.onrender.com/productlist").then((res) => {
       const allProducts = res.data;
 
       //  Bestseller
@@ -41,7 +41,7 @@ const Home = () => {
                 className="bg-white shadow-md  p-4  transition group border"
               >
                 <img
-                  src={`http://localhost:5000${p.imageUrl}`}
+                  src={`https://backend-1-v6zd.onrender.com${p.imageUrl}`}
                   alt={p.name}
                   className="w-44 h-40 mx-auto rounded-md group- transition-all group-hover:scale-105 duration-300 object-contain"
                 />
@@ -86,7 +86,7 @@ const Home = () => {
                 className="bg-white shadow-md border group p-4  transition "
               >
                 <img
-                  src={`http://localhost:5000/product/image/${p._id}`}
+                  src={`https://backend-1-v6zd.onrender.com/product/image/${p._id}`}
                   alt={p.name}
                   className="w-48 h-40  mx-auto rounded-md group-hover:scale-105 transform transition-all duration-300 object-contain"
                 />
