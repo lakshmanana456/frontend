@@ -45,41 +45,30 @@ export const CartProvider = ({ children }) => {
   };
 
   //  Increase quantity
- const increaseQty = async (id) => {
-  if (!userId) return;
+  const increaseQty = async (id) => {
+    if (!userId) return;
+    const item = cart.find(p => p.productId === id);
+    if (item) {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
+        productId: id,
+        quantity: item.quantity + 1
+      });
+      setCart(res.data.items);
+    }
+  };
 
-  // cart items now have productId as string
-  const item = cart.find(p => p.productId === id);
-  if (item) {
-    const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
-      productId: id,
-      quantity: item.quantity + 1
-    });
-    // normalize productId again in case backend returns object
-    const normalized = res.data.items.map(item => ({
-      ...item,
-      productId: typeof item.productId === "object" ? item.productId._id : item.productId
-    }));
-    setCart(normalized);
-  }
-};
-
-const decreaseQty = async (id) => {
-  if (!userId) return;
-  
-  const item = cart.find(p => p.productId === id);
-  if (item && item.quantity > 1) {
-    const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
-      productId: id,
-      quantity: item.quantity - 1
-    });
-    const normalized = res.data.items.map(item => ({
-      ...item,
-      productId: typeof item.productId === "object" ? item.productId._id : item.productId
-    }));
-    setCart(normalized);
-  }
-};
+  //  Decrease quantity
+  const decreaseQty = async (id) => {
+    if (!userId) return;
+    const item = cart.find(p => p.productId === id);
+    if (item && item.quantity > 1) {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
+        productId: id,
+        quantity: item.quantity - 1
+      });
+      setCart(res.data.items);
+    }
+  };
 
   //  Clear cart
   const clearCart = async () => {
