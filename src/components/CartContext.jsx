@@ -25,13 +25,6 @@ export const CartProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const normalizeCart = (items) => {
-  return items.map(item => ({
-    ...item,
-    productId: typeof item.productId === "object" ? item.productId._id : item.productId
-  }));
-};
-
   //  Add to cart
   const addToCart = async (product) => {
     if (!userId) return alert("Please login to add items to your cart");
@@ -52,32 +45,30 @@ export const CartProvider = ({ children }) => {
   };
 
   //  Increase quantity
-  // Increase quantity
-const increaseQty = async (id) => {
-  if (!userId) return;
-  const item = cart.find(p => p.productId === id);
-  if (item) {
-    const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
-      productId: id,
-      quantity: item.quantity + 1
-    });
-    setCart(normalizeCart(res.data.items));
-  }
-};
+  const increaseQty = async (id) => {
+    if (!userId) return;
+    const item = cart.find(p => p.productId === id);
+    if (item) {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
+        productId: id,
+        quantity: item.quantity + 1
+      });
+      setCart(res.data.items);
+    }
+  };
 
-// Decrease quantity
-const decreaseQty = async (id) => {
-  if (!userId) return;
-  const item = cart.find(p => p.productId === id);
-  if (item && item.quantity > 1) {
-    const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
-      productId: id,
-      quantity: item.quantity - 1
-    });
-    setCart(normalizeCart(res.data.items));
-  }
-};
-
+  //  Decrease quantity
+  const decreaseQty = async (id) => {
+    if (!userId) return;
+    const item = cart.find(p => p.productId === id);
+    if (item && item.quantity > 1) {
+      const res = await axios.put(`https://backend-1-v6zd.onrender.com/cart/${userId}/update`, {
+        productId: id,
+        quantity: item.quantity - 1
+      });
+      setCart(res.data.items);
+    }
+  };
 
   //  Clear cart
   const clearCart = async () => {
