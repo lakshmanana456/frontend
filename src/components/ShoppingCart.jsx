@@ -11,12 +11,28 @@ const ShoppingCart = () => {
     useContext(CartContext);
 
   //  Track Firebase user
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((u) => {
-      setUser(u); // set user if logged in, otherwise null
+ useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (u) => {
+      setUser(u);
+      if (u) {
+        try {
+          const res = await fetch(`https://backend-1-v6zd.onrender.com/cart/${u.uid}`);
+          const data = await res.json();
+
+          // normalize productId to string
+          const normalized = data.items.map(item => ({
+            ...item,
+            productId: typeof item.productId === "object" ? item.productId._id : item.productId
+          }));
+
+          setCart(normalized);
+        } catch (err) {
+          console.error("Error fetching cart:", err);
+        }
+      }
     });
     return () => unsubscribe();
-  }, []);
+  }, [setCart]);
 
   //  If no user OR no items
   if (!user || cart.length === 0) {
