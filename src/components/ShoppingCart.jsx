@@ -63,9 +63,9 @@ const ShoppingCart = () => {
               <h2 className="font-semibold lg:text-lg">
                 {item.name || product.name}
               </h2>
-              <h2 className=" lg:text-sm">
+              {/* <h2 className=" lg:text-sm">
                 {item.storage || product.storage}
-              </h2>
+              </h2> */}
 
               <p className="flex items-center text-green-600 font-bold">
                 <FaRupeeSign /> {item.offerPrice || product.offerPrice}
