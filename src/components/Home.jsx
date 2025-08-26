@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Hero from "./Hero";
 import { Link } from "react-router-dom";
 import WeOffer from "./WeOffer";
 import { FaRupeeSign, FaStar } from "react-icons/fa";
+import Header from "./Header";
 
 const Home = () => {
   const [bestsellers, setBestsellers] = useState([]);
@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div>
-      <Hero />
+      <Header />
       {/* latest collection */}
       <section className="px-6 py-10">
         <h2 className="text-2xl font-bold mb-6">Latest Collection</h2>

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FaRupeeSign, FaTrash, FaPlus, FaMinus } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "./CartContext";
 import auth from "../config";
 
@@ -46,21 +46,27 @@ const ShoppingCart = () => {
             className="flex gap-6 items-center border p-4 rounded-lg shadow-sm bg-white"
           >
             {/* Image */}
-            <img
-              src={
-                typeof product === "object"
-                  ? `https://backend-1-v6zd.onrender.com${product.imageUrl}`
-                  : `https://backend-1-v6zd.onrender.com/product/image/${productId}`
-              }
-              alt={item.name || product.name}
-              className="lg:w-24 lg:h-24 w-16 h-16 object-cover rounded-md"
-            />
+            <Link to={`/productdetails/${productId}`} key={productId}>
+              <img
+                src={
+                  typeof product === "object"
+                    ? `https://backend-1-v6zd.onrender.com${product.imageUrl}`
+                    : `https://backend-1-v6zd.onrender.com/product/image/${productId}`
+                }
+                alt={item.name || product.name}
+                className="lg:w-24 lg:h-24 w-16 h-16 object-cover rounded-md"
+              />
+            </Link>
 
             {/* Details */}
             <div className="flex-1">
               <h2 className="font-semibold lg:text-lg">
                 {item.name || product.name}
               </h2>
+              <h2 className=" lg:text-sm">
+                {item.storage || product.storage}
+              </h2>
+
               <p className="flex items-center text-green-600 font-bold">
                 <FaRupeeSign /> {item.offerPrice || product.offerPrice}
               </p>

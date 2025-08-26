@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
-const Hero = () => {
+const Header = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideIntervalRef = useRef(null);
 
@@ -79,4 +79,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Header;
